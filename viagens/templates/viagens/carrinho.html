@@ -25,7 +25,7 @@
                         <td>{{ pacote.data_viagem|date:"d/m/Y" }}</td>
                         <td class="preco-item">R$ {{ pacote.preco }}</td>
                         <td>
-                            <a href="#" class="btn-remover">Remover</a>
+                            <a href="{% url 'remover_carrinho' pacote.id %}" class="btn-remover">Remover</a>
                         </td>
                     </tr>
                     {% endfor %}
