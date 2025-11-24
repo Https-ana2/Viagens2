@@ -70,12 +70,10 @@ def ver_carrinho(request):
         try:
             ids_carrinho.append(int(i))
         except (TypeError, ValueError):
-            # ignora valores inválidos
             continue
 
     pacotes_no_carrinho = Pacote.objects.filter(id__in=ids_carrinho)
 
-    # evita TypeError somando Decimal com int - inicializa com Decimal('0')
     total = sum((p.preco for p in pacotes_no_carrinho), Decimal('0'))
 
     return render(request, 'viagens/carrinho.html', {'pacotes': pacotes_no_carrinho, 'total': total})
